@@ -1,0 +1,17 @@
+{% extends 'movies/base.html' %}
+
+{% block body %}
+    <h1>Movies Index page</h1>
+    <hr />
+    <a href="{% url 'movies:create' %}">새 영화 등록</a>
+    <hr />
+
+    {% for movie in movies %}
+        <h5><b> {{ movie.id }}. 제목 : {{ movie.title }} </b></h5>
+        <p>평점 : {{ movie.score }}ㅤㅤㅤ 개봉일 : {{ movie.open_date }}ㅤㅤㅤ 장르 : {{ movie.genre }}</p>
+        <a href="{% url 'movies:detail' movie.id %}">[영화 정보 조회]</a>
+        <hr />
+    {% endfor %}
+
+{% endblock %}
+
